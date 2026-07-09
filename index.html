@@ -1,1 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Créer, collaborer et communiquer avec Canva Équipe — APF France handicap Auvergne-Rhône-Alpes</title>
+<meta name="description" content="Formation : produire des supports professionnels dans le respect de l'identité visuelle d'APF France handicap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bleu-petrole:#00536A;
+    --bleu-petrole-dark:#003a4b;
+    --jaune:#F7A916;
+    --vert:#00A897;
+    --blanc:#FFFFFF;
+    --gris-fond:#F4F8F9;
+    --gris-texte:#2C2C2C;
+    --gris-bordure:#DCE6E8;
+    --ombre:0 8px 24px rgba(0,83,106,0.10);
+    --rayon:14px;
+  }
 
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'DM Sans', Calibri, Arial, sans-serif;
+    color:var(--gris-texte);
+    background:var(--blanc);
+    line-height:1.6;
+    font-size:17px;
+  }
+  h1,h2,h3,h4{
+    font-family:'Poppins', Calibri, Arial, sans-serif;
+    color:var(--bleu-petrole);
+    line-height:1.25;
+    margin:0 0 .5em 0;
+  }
+  a{color:var(--bleu-petrole);}
+  a:focus-visible, button:focus-visible, summary:focus-visible, details summary:focus-visible{
+    outline:3px solid var(--jaune);
+    outline-offset:3px;
+  }
+  img{max-width:100%; display:block;}
+  .skip-link{
+    position:absolute; left:-999px; top:auto;
+    background:var(--bleu-petrole); color:#fff; padding:.75em 1.2em;
+    z-index:1000; border-radius:0 0 8px 0; font-weight:600;
+  }
+  .skip-link:focus{ left:0; top:0; }
+
+  .container{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header{
+    background:linear-gradient(180deg,#ffffff 0%, var(--gris-fond) 100%);
+    border-bottom:1px solid var(--gris-bordure);
+    padding:48px 0 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .wave-deco{
+    position:absolute;
+    bottom:-10px; right:-40px;
+    width:340px; opacity:.9;
+    pointer-events:none;
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
+    position:relative;
+    z-index:1;
+  }
+  .logo-wrap img{ height:64px; width:auto; }
+  .logo-fallback{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    color:var(--bleu-petrole);
+    font-size:1.05rem;
+    border:1px dashed var(--gris-bordure);
+    padding:14px 18px;
+    border-radius:10px;
+    background:#fff;
+  }
+  .header-text h1{
+    font-size:clamp(1.6rem, 3.2vw, 2.35rem);
+    font-weight:700;
+    margin-bottom:.35em;
+  }
+  .header-text p.accroche{
+    font-size:1.1rem;
+    color:var(--gris-texte);
+    max-width:56ch;
+    margin:0;
+  }
+  .info-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:32px;
+    position:relative;
+    z-index:1;
+  }
+  .info-chip{
+    display:flex;
+    align-items:center;
+    gap:.5em;
+    background:#fff;
+    border:1px solid var(--gris-bordure);
+    padding:10px 16px;
+    border-radius:999px;
+    font-size:.95rem;
+    font-weight:600;
+    color:var(--bleu-petrole);
+    box-shadow:var(--ombre);
+  }
+  .info-chip .dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--jaune);
+    flex:none;
+  }
+
+  /* ===== SECTIONS ===== */
+  section{ padding:56px 0; }
+  section.alt{ background:var(--gris-fond); }
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-size:.8rem;
+    font-weight:700;
+    color:var(--vert);
+    margin-bottom:.6em;
+    display:block;
+  }
+  section > .container > h2{ font-size:1.6rem; margin-bottom:.3em; }
+  .section-intro{ max-width:65ch; color:#4a5a5e; margin-bottom:2em; }
+
+  /* ===== PROGRAMME ACCORDION ===== */
+  .programme-list{ display:flex; flex-direction:column; gap:12px; }
+  details.module{
+    background:#fff;
+    border:1px solid var(--gris-bordure);
+    border-radius:var(--rayon);
+    overflow:hidden;
+    transition:box-shadow .2s ease;
+  }
+  details.module[open]{ box-shadow:var(--ombre); border-color:#bcdadf; }
+  summary.module-head{
+    list-style:none;
+    cursor:pointer;
+    padding:18px 22px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    color:var(--bleu-petrole);
+    font-size:1.02rem;
+  }
+  summary.module-head::-webkit-details-marker{ display:none; }
+  .module-time{
+    flex:none;
+    font-family:'DM Sans',sans-serif;
+    font-weight:700;
+    font-size:.85rem;
+    background:var(--bleu-petrole);
+    color:#fff;
+    padding:6px 12px;
+    border-radius:8px;
+    min-width:64px;
+    text-align:center;
+  }
+  .module-title{ flex:1; }
+  .chevron{
+    flex:none;
+    width:22px; height:22px;
+    transition:transform .2s ease;
+    color:var(--jaune);
+  }
+  details.module[open] .chevron{ transform:rotate(180deg); }
+  .module-body{
+    padding:0 22px 20px 22px;
+    color:#3c4a4d;
+  }
+  .module-body p{ margin:.4em 0; }
+
+  /* ===== PUBLIC CONCERNÉ ===== */
+  .public-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(170px,1fr));
+    gap:14px;
+  }
+  .public-card{
+    background:#fff;
+    border:1px solid var(--gris-bordure);
+    border-radius:var(--rayon);
+    padding:18px;
+    text-align:center;
+    font-weight:600;
+    color:var(--bleu-petrole);
+    font-size:.95rem;
+  }
+
+  /* ===== CONNEXION / MODALITES ===== */
+  .modalites-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:28px;
+    align-items:start;
+  }
+  @media (max-width:720px){ .modalites-grid{ grid-template-columns:1fr; } }
+  .teams-card{
+    background:var(--bleu-petrole);
+    color:#fff;
+    border-radius:var(--rayon);
+    padding:28px;
+  }
+  .teams-card h3{ color:#fff; }
+  .teams-card a.btn-teams{
+    display:inline-flex;
+    align-items:center;
+    gap:.6em;
+    background:var(--jaune);
+    color:var(--bleu-petrole-dark);
+    font-weight:700;
+    padding:12px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    margin-top:14px;
+  }
+  .checklist{ list-style:none; margin:0; padding:0; }
+  .checklist li{
+    display:flex; gap:.7em; align-items:flex-start;
+    margin-bottom:14px; font-size:.97rem; color:#3c4a4d;
+  }
+  .checklist svg{ flex:none; margin-top:3px; color:var(--vert); }
+
+  /* ===== FORMATRICE ===== */
+  .formatrice-card{
+    display:flex;
+    gap:22px;
+    align-items:flex-start;
+    background:#fff;
+    border:1px solid var(--gris-bordure);
+    border-radius:var(--rayon);
+    padding:28px;
+    box-shadow:var(--ombre);
+  }
+  .formatrice-avatar{
+    flex:none;
+    width:72px; height:72px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--bleu-petrole),var(--vert));
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:1.4rem;
+  }
+  .formatrice-name{ font-weight:700; color:var(--bleu-petrole); font-family:'Poppins',sans-serif;}
+  .formatrice-role{ color:#5a6a6e; font-size:.92rem; margin-bottom:.8em; }
+  .formatrice-contacts{ display:flex; flex-wrap:wrap; gap:16px; margin-top:12px; font-size:.92rem; }
+  .formatrice-contacts a{ font-weight:600; text-decoration:none; }
+  .formatrice-contacts a:hover{ text-decoration:underline; }
+
+  /* ===== TELECHARGEMENTS ===== */
+  .downloads{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .dl-btn{
+    display:flex;
+    align-items:center;
+    gap:.8em;
+    background:#fff;
+    border:2px solid var(--bleu-petrole);
+    color:var(--bleu-petrole);
+    font-weight:700;
+    font-family:'Poppins',sans-serif;
+    padding:14px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:.98rem;
+    transition:background .15s ease, color .15s ease;
+  }
+  .dl-btn:hover, .dl-btn:focus-visible{
+    background:var(--bleu-petrole);
+    color:#fff;
+  }
+  .dl-btn svg{ flex:none; }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--bleu-petrole-dark);
+    color:#e7f1f3;
+    padding:44px 0 30px;
+    font-size:.92rem;
+  }
+  footer a{ color:#fff; }
+  .footer-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:24px;
+    margin-bottom:24px;
+  }
+  .footer-col h4{ color:#fff; font-size:1rem; margin-bottom:.6em; }
+  .footer-col p, .footer-col a{ color:#cfe3e7; }
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.15);
+    padding-top:18px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:10px;
+    color:#a9c5ca;
+    font-size:.85rem;
+  }
+  .footer-bottom a{ color:#a9c5ca; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <img src="logo.png" alt="Logo APF France handicap — Risquer l'impossible" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',innerText:'APF France handicap'}))">
+      </div>
+      <div class="header-text">
+        <h1>Créer, collaborer et communiquer avec Canva Équipe</h1>
+        <p class="accroche">Produire des supports professionnels dans le respect de l'identité visuelle d'APF France handicap.</p>
+      </div>
+    </div>
+
+    <div class="info-bar" aria-label="Informations pratiques">
+      <span class="info-chip"><span class="dot" aria-hidden="true"></span>Date : à définir</span>
+      <span class="info-chip"><span class="dot" aria-hidden="true"></span>Horaire : 10h00 – 12h00 (2h)</span>
+      <span class="info-chip"><span class="dot" aria-hidden="true"></span>Format : distanciel via Microsoft Teams</span>
+      <span class="info-chip"><span class="dot" aria-hidden="true"></span>20 participants maximum</span>
+    </div>
+  </div>
+
+  <svg class="wave-deco" viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <path d="M0 90 C120 20, 260 20, 500 130 L500 220 L0 220 Z" fill="var(--bleu-petrole)" opacity="0.10"/>
+    <path d="M0 140 C140 90, 300 150, 500 100 L500 220 L0 220 Z" fill="var(--jaune)" opacity="0.18"/>
+  </svg>
+</header>
+
+<main id="contenu-principal">
+
+  <!-- PROGRAMME -->
+  <section id="programme" aria-labelledby="programme-titre">
+    <div class="container">
+      <span class="eyebrow">Le parcours d'immersion</span>
+      <h2 id="programme-titre">Programme de la session (2 heures chrono)</h2>
+      <p class="section-intro">Huit temps forts, entièrement pratiques, pour passer de la découverte de Canva Équipe à la production d'un support conforme, prêt à être partagé.</p>
+
+      <div class="programme-list">
+
+        <details class="module" open>
+          <summary class="module-head">
+            <span class="module-time">10h00</span>
+            <span class="module-title">Accueil, objectifs et attentes</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="module-body">
+            <p>Tour de table, présentation des objectifs de la session et recueil des attentes de chacun.</p>
+          </div>
+        </details>
+
+        <details class="module">
+          <summary class="module-head">
+            <span class="module-time">10h10</span>
+            <span class="module-title">Pourquoi harmoniser nos communications ?</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="module-body">
+            <p>Comprendre les enjeux de conformité, d'efficacité et de cohérence visuelle pour l'ensemble des supports de l'association.</p>
+          </div>
+        </details>
+
+        <details class="module">
+          <summary class="module-head">
+            <span class="module-time">10h20</span>
+            <span class="module-title">Découverte de Canva Équipe (Espace Marque, modèles, dossiers)</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="module-body">
+            <p>Prise en main de l'environnement Canva Équipe AURA : Espace Marque, bibliothèque de modèles et organisation des dossiers.</p>
+          </div>
+        </details>
+
+        <details class="module">
+          <summary class="module-head">
+            <span class="module-time">10h40</span>
+            <span class="module-title">Atelier « Le détective graphique »</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="module-body">
+            <p>Exercice ludique pour apprendre à repérer les bonnes et les mauvaises pratiques de communication visuelle.</p>
+          </div>
+        </details>
+
+        <details class="module">
+          <summary class="module-head">
+            <span class="module-time">10h55</span>
+            <span class="module-title">Personnaliser efficacement un modèle Canva</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="module-body">
+            <p>Démonstration et mise en pratique : adapter un modèle existant sans modifier la charte graphique.</p>
+          </div>
+        </details>
+
+        <details class="module">
+          <summary class="module-head">
+            <span class="module-time">11h15</span>
+            <span class="module-title">Collaborer et partager les bonnes pratiques</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="module-body">
+            <p>Travailler à plusieurs dans l'environnement Canva Équipe : partage, commentaires et co-édition.</p>
+          </div>
+        </details>
+
+        <details class="module">
+          <summary class="module-head">
+            <span class="module-time">11h25</span>
+            <span class="module-title">Le circuit de validation</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="module-body">
+            <p>Diffuser un support prêt à être validé et partagé, sans retouches complexes : le circuit à suivre.</p>
+          </div>
+        </details>
+
+        <details class="module">
+          <summary class="module-head">
+            <span class="module-time">11h30</span>
+            <span class="module-title">Quiz, échanges et plan d'action individuel</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="module-body">
+            <p>Vérification des acquis, temps d'échange libre et formalisation d'un plan d'action à mettre en œuvre dans sa structure.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLIC CONCERNÉ -->
+  <section class="alt" aria-labelledby="public-titre">
+    <div class="container">
+      <span class="eyebrow">À qui s'adresse cette formation ?</span>
+      <h2 id="public-titre">Conçue pour toute personne amenée à créer des supports</h2>
+      <p class="section-intro">Ponctuellement ou régulièrement, sans être spécialiste de la communication.</p>
+      <div class="public-grid">
+        <div class="public-card">Responsables de structures</div>
+        <div class="public-card">Chefs de projet</div>
+        <div class="public-card">Chargés de mission</div>
+        <div class="public-card">Assistants de direction</div>
+        <div class="public-card">Professionnels RH</div>
+        <div class="public-card">Référents communication</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNEXION & MODALITES (remplace la carte, formation 100% distancielle) -->
+  <section aria-labelledby="modalites-titre">
+    <div class="container">
+      <span class="eyebrow">Se connecter à la session</span>
+      <h2 id="modalites-titre">Connexion &amp; modalités pratiques</h2>
+      <p class="section-intro">Cette formation se déroule intégralement à distance : aucun déplacement n'est nécessaire.</p>
+
+      <div class="modalites-grid">
+        <div class="teams-card">
+          <h3>Rejoindre la session Teams</h3>
+          <p>Le lien de connexion Microsoft Teams vous sera communiqué par e-mail après votre inscription.</p>
+          <a class="btn-teams" href="#inscription" aria-label="Recevoir le lien de connexion Teams par e-mail">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Recevoir le lien de connexion
+          </a>
+        </div>
+
+        <div>
+          <h3>Avant de vous connecter, vérifiez :</h3>
+          <ul class="checklist">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Matériel</strong> — un ordinateur et une connexion Internet stable.</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Accès requis</strong> — être membre de l'équipe Canva Pro Auvergne-Rhône-Alpes.</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span><strong>Environnement</strong> — du son et un micro fonctionnel pour les interactions.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOT DE LA FORMATRICE (remplace la vidéo, non disponible) -->
+  <section class="alt" aria-labelledby="formatrice-titre">
+    <div class="container">
+      <span class="eyebrow">Le mot de la formatrice</span>
+      <h2 id="formatrice-titre">Votre intervenante</h2>
+      <div class="formatrice-card">
+        <div class="formatrice-avatar" aria-hidden="true">LM</div>
+        <div>
+          <p class="formatrice-name">Laura Marangoni</p>
+          <p class="formatrice-role">Cheffe de projet communication régionale — APF France handicap Auvergne-Rhône-Alpes</p>
+          <p>« Cette session est pensée pour vous rendre autonome et à l'aise avec nos outils Canva, tout en respectant l'identité visuelle qui fait la force de notre association. On avance ensemble, à votre rythme, avec beaucoup de pratique et peu de théorie. »</p>
+          <div class="formatrice-contacts">
+            <a href="mailto:laura.marangoni@apf.asso.fr">laura.marangoni@apf.asso.fr</a>
+            <a href="tel:+33787554268">07 87 55 42 68</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TELECHARGEMENTS -->
+  <section id="inscription" aria-labelledby="telechargements-titre">
+    <div class="container">
+      <span class="eyebrow">Documents</span>
+      <h2 id="telechargements-titre">Téléchargements</h2>
+      <p class="section-intro">Retrouvez le programme détaillé et le livret stagiaire de la formation.</p>
+      <div class="downloads">
+        <a class="dl-btn" href="programme.pdf" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Télécharger le programme (PDF)
+        </a>
+        <a class="dl-btn" href="livret-stagiaire.pdf" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Télécharger le livret stagiaire (PDF)
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Contact formation</h4>
+        <p>Laura Marangoni<br>Cheffe de projet communication régionale</p>
+        <p><a href="mailto:laura.marangoni@apf.asso.fr">laura.marangoni@apf.asso.fr</a><br>
+        <a href="tel:+33787554268">07 87 55 42 68</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>APF France handicap</h4>
+        <p>Auvergne-Rhône-Alpes</p>
+        <p><a href="https://www.apf-francehandicap.org" target="_blank" rel="noopener">apf-francehandicap.org</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Accessibilité &amp; inclusion</h4>
+        <p><a href="https://www.apf-francehandicap.org" target="_blank" rel="noopener">Notre politique d'inclusion et de handicap</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© APF France handicap — Auvergne-Rhône-Alpes</span>
+      <span>Risquer l'impossible</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
